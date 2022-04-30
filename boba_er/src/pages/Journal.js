@@ -13,6 +13,7 @@ import dri from '../img/Cup.png';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css"
 
+var months = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ];
 function Journal({ isAuth }) {
   const [postLists, setPostList] = useState([]);
   const postsCollectionRef = collection(db, "bobaPosts");
@@ -37,13 +38,16 @@ function Journal({ isAuth }) {
           <Columns>
           <Columns.Column className="is-two-thirds" >
             {postLists.map((post) => {
+              var date = new Date(post.timestamp);
+              var day = date.getDay();
+              var month = month[date.getMonth()-1]
               return (
-                
                   <Card class="box">
                     <Columns>
                       <Columns.Column className="is-2">
-                        <p class="date">13</p>
-                        <p class="month">Mar</p>
+
+                        <p class="date">day</p>
+                        <p class="month">month</p>
                       </Columns.Column>
 
                       <Columns.Column className="is-2">
